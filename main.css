@@ -1,0 +1,79 @@
+* {
+  box-sizing: border-box;
+}
+
+/********** Modal styling **********/
+p {
+  margin-top: 0;
+}
+
+.modal-container {
+  position: fixed;
+  background-color: #fff;
+  left: 50%;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 500px;
+  max-height: 500px;
+
+
+  transform: translate(-50%, -200%);
+
+  transition: transform 200ms ease-in;
+}
+
+.modal:before {
+  content: "";
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: none;
+}
+
+.modal:target:before {
+  display: block;
+}
+
+.modal:target .modal-container {
+  /* Makes sure the .modal-container is the correct distance from
+  the top of the page */
+  top: 10%;
+  transform: translate(-50%, 0);
+}
+
+/* Setting the <a> href to "#close-modal" instead of "#" ensures closing the modal doesn't shoot back to the top of the page. Leave the declaration block empty. */
+#close-modal {}
+
+
+
+/********** D3 styling **********/
+.chart-container {
+  width: 90%;
+  height: 90%;
+  border: 1px solid green;
+}
+
+.chart {
+  border: 1px solid blue;
+}
+
+.parent-Group {
+  border: 1px solid black;
+}
+
+g, text {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', sans-serif
+}
+
+.bar {
+  fill: steelblue;
+}
+
+.bar:hover {
+  fill: brown;
+}
