@@ -7,14 +7,14 @@ let stressors = {
   "postHeartRate": 70
 };
 
-let stressArr = [
+let stressorData = [
   {typeHR: "preHeartRate", heartRate: 80},
   {typeHR: "postHeartRate", heartRate: 70}
 ];
 
 
 /********** drawChart function **********/
-function drawChart() {
+function drawChart(stressArr) {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
@@ -129,7 +129,8 @@ function drawChart() {
 
 
 /********** resizeChart function **********/
-function resizeChart() {
+function drawChart(stressArr) {
+  function resizeChart() {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
@@ -230,11 +231,18 @@ function resizeChart() {
 
 // First method: Immediately call drawChart() and resizeChart()
 // on window resize
-drawChart();
+drawChart(stressorData);
 
 //window.addEventListener("resize", resizeChart);
-d3.select(window).on("resize", resizeChart);
+d3.select(window).on("resize", function () {
+  resizeChart(stressorData);
+});
 
 
-// Second method: Use Lity event handler to call drawChart()
-// and resizeChart() on window resize
+/* NOTE: The stressor data used for the functions is found in `app.js`.
+The stressor data is stored in STATE_DATA, which is the same as
+the data found in the Node capstone. See lines 10-29 of `app.js`.
+
+I commented out calling drawChart() and resizeChart() in this file
+because they will be called from `app.js` for the event handler
+when the Lity lightbox is clicked. */
