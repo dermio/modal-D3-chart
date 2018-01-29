@@ -129,8 +129,7 @@ function drawChart(stressArr) {
 
 
 /********** resizeChart function **********/
-function drawChart(stressArr) {
-  function resizeChart() {
+function resizeChart(stressArr) {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
