@@ -230,12 +230,12 @@ function resizeChart(stressArr) {
 
 // First method: Immediately call drawChart() and resizeChart()
 // on window resize
-drawChart(stressorData);
+/* drawChart(stressorData); */
 
 //window.addEventListener("resize", resizeChart);
-d3.select(window).on("resize", function () {
+/* d3.select(window).on("resize", function () {
   resizeChart(stressorData);
-});
+}); */
 
 
 /* NOTE: The stressor data used for the functions is found in `app.js`.
@@ -245,3 +245,14 @@ the data found in the Node capstone. See lines 10-29 of `app.js`.
 I commented out calling drawChart() and resizeChart() in this file
 because they will be called from `app.js` for the event handler
 when the Lity lightbox is clicked. */
+
+
+/* On clicking button to open modal, render the chart */
+function startApp() {
+  // Listen for click button to open modal
+  $("a").on("click", function (event) {
+    console.log("<a> clicked");
+  })
+}
+
+$(startApp);
