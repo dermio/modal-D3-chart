@@ -52,7 +52,7 @@ function findStressorById(stressorId) {
 }
 
 /********** drawChart function **********/
-function drawChart(stressArr) {
+function drawChart(stressArr, stressId) {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
@@ -167,7 +167,7 @@ function drawChart(stressArr) {
 
 
 /********** resizeChart function **********/
-function resizeChart(stressArr) {
+function resizeChart(stressArr, stressId) {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
   let containWidth = parseInt(d3.select(".chart-container").style("width"));
@@ -287,7 +287,7 @@ when the Lity lightbox is clicked. */
 
 /* On clicking button to open modal, render the chart */
 function startApp() {
-  // Listen for click button to open modal
+  // Listen for click button to open modal.
   $(".d3-button").on("click", function (event) {
     // console.log(event.currentTarget);
     let objId = $(event.currentTarget).closest(".js-single-result")
@@ -297,8 +297,8 @@ function startApp() {
     let d3ChartArg = findStressorById(objId);
 
     // Call drawChart() and resizeChart() with d3ChartArg
-    drawChart(d3ChartArg);
-    resizeChart(d3ChartArg);
+    drawChart(d3ChartArg, objId);
+    resizeChart(d3ChartArg, objId);
   });
 }
 
