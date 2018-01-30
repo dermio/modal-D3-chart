@@ -35,6 +35,21 @@ const STATE_DATA = {
   ]
 };
 
+/********** function findStressorById **********/
+function findStressorById(stressorId) {
+  let stressor = STATE_DATA.data.find(function (element) {
+    return element.id === stressorId;
+  });
+  console.log(stressor);
+
+  let chartData = [
+    {typeHR: "preHeartRate", heartRate: stressor.preHeartRate},
+    {typeHR: "postHeartRate", heartRate: stressor.postHeartRate}
+  ];
+  console.log(chartData);
+  return chartData;
+
+}
 
 /********** drawChart function **********/
 function drawChart(stressArr) {
