@@ -303,3 +303,16 @@ function startApp() {
 }
 
 $(startApp);
+
+
+/*
+To Do
+1. Inside drawChart() and resizeChart(), traverse the DOM by referencing
+the stressor Id, then travel down the DOM from the Id to the
+.chart-container. This ensures the chart is rendered inside the correct .chart-container. Currently, all charts are rendered in the FIRST div
+with the .chart-container class.
+
+2. Similar to the `lity-lightbox-D3-demo` repo, create an event listener
+for closing the modal. When closing the modal, I want to remove any
+<svg> elements that are the child of .chart-container.
+*/
