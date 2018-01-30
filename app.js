@@ -288,8 +288,17 @@ when the Lity lightbox is clicked. */
 /* On clicking button to open modal, render the chart */
 function startApp() {
   // Listen for click button to open modal
-  $("a").on("click", function (event) {
-    console.log("<a> clicked");
+  $(".d3-button").on("click", function (event) {
+    // console.log(event.currentTarget);
+    let objId = $(event.currentTarget).closest(".js-single-result")
+                                      .attr("id");
+    console.log(objId);
+
+    let d3ChartArg = findStressorById(objId);
+
+    // Call drawChart() and resizeChart() with d3ChartArg
+    drawChart(d3ChartArg);
+    resizeChart(d3ChartArg);
   });
 }
 
