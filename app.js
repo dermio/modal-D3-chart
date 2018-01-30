@@ -95,7 +95,12 @@ function drawChart(stressArr, stressId) {
   let yAxis = d3.axisLeft(yScale);
 
   /***** append SVG *****/
-  let chart = d3.select(".chart-container")
+  /* Select first by unique Id, followed by .chart-container. If omit
+  selection by Id, all the <svg> charts will be appended to the first
+  .chart-container. The other .chart-container elements won't have
+  a chart displayed. */
+  let chart = d3.select(`#${stressId}`)
+                .select(".chart-container")
               .append("svg")
                 .attr("class", "chart")
                 .attr("width", width)
