@@ -311,6 +311,12 @@ function startApp() {
     drawChart(d3ChartArg, objId);
     resizeChart(d3ChartArg, objId);
   });
+
+  $(".close-d3-button").on("click", function (event) {
+    /* Instead of travesing up from the close button, and back down
+    to the .chart-container. */
+    $(".chart-container").empty();
+  })
 }
 
 $(startApp);
