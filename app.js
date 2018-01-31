@@ -316,6 +316,11 @@ function startApp() {
     /* Instead of travesing up from the close button, and back down
     to the .chart-container. */
     $(".chart-container").empty();
+
+    /* Alternative code, similar to Lity solution */
+    /* $(event.currentTarget).closest(".modal-container")
+                          .find(".chart-container")
+                          .empty(); */
   })
 }
 
