@@ -14,11 +14,14 @@ p {
   padding: 20px;
   border-radius: 5px;
 
-  width: 500px;
-  height: 500px;
-  /*width: 80%;
-  max-width: 500px;
-  max-height: 500px;*/
+  /*width: 500px;
+  height: 500px;*/
+
+  max-width: 600px;
+  max-height: 450px;
+  min-width: 320px;
+  width: 80%;
+  height: 100%;
 
   transform: translate(-50%, -200%);
   transition: transform 200ms ease-in;
