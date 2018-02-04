@@ -53,7 +53,17 @@ p {
 /* Setting the <a> href to "#close-modal" instead of "#" ensures closing the modal doesn't shoot back to the top of the page. Leave the declaration block empty. */
 #close-modal {}
 
+/* Style the modal close button */
+.close-d3-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 
+  /* Remove the default underline from <a> elements*/
+  text-decoration: none;
+  float: right;
+}
 
 /********** D3 styling **********/
 .chart-container {
