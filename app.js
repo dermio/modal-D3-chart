@@ -307,6 +307,10 @@ function startApp() {
 
     let d3ChartArg = findStressorById(objId);
 
+    /* d3.selectAll(".chart-container")
+      .selectAll("svg")
+      .remove(); */
+
     // Call drawChart() and resizeChart() with d3ChartArg
     drawChart(d3ChartArg, objId);
     resizeChart(d3ChartArg, objId);
@@ -315,7 +319,16 @@ function startApp() {
   $(".close-d3-button").on("click", function (event) {
     /* Instead of travesing up from the close button, and back down
     to the .chart-container. */
-    $(".chart-container").empty();
+
+    /* jQuery way to remove <svg>
+    $(".chart-container").empty(); */
+
+    /* D3 way to remove <svg>. Can eliminate the event handler for
+    clicking the close button and place it in the handler for opening
+    the modal. */
+    d3.selectAll(".chart-container")
+      .selectAll("svg")
+      .remove();
 
     /* Alternative code, similar to Lity solution */
     /* $(event.currentTarget).closest(".modal-container")
