@@ -181,8 +181,22 @@ function drawChart(stressArr, stressId) {
 function resizeChart(stressArr, stressId) {
   /***** Chart dimensions *****/
   // SVG chart will have width & length of parent container element
-  let containWidth = parseInt(d3.select(".chart-container").style("width"));
-  let containHeight = parseInt(d3.select(".chart-container").style("height"));
+  /*let containWidth = parseInt(d3.select(".chart-container").style("width"));
+  let containHeight = parseInt(d3.select(".chart-container").style("height"));*/
+
+  /* JackM lines 188-199 */
+  console.log("...");
+  let containWidth, containHeight;
+
+  if ($(".modal-container").width() > 600) {
+    containWidth = 600;
+  } else if ($(".modal-container").width() < 300) {
+    containWidth = 300;
+  } else {
+    containWidth = $(".modal-container").width();
+  }
+
+  containHeight = containWidth * .75;
 
   /* Optional: Can set the width and height based on the aspect ratio
   For example: 4:3 ratio, or the height is 75% the length of the width
@@ -298,14 +312,16 @@ when the Lity lightbox is clicked. */
 
 /* On clicking button to open modal, render the chart */
 function startApp() {
+  let objId, d3ChartArg; /* JackM declare variables in outer scope */
+
   // Listen for click button to open modal.
   $(".d3-button").on("click", function (event) {
     // console.log(event.currentTarget);
-    let objId = $(event.currentTarget).closest(".js-single-result")
+    objId = $(event.currentTarget).closest(".js-single-result")
                                       .attr("id");
     console.log(objId);
 
-    let d3ChartArg = findStressorById(objId);
+    d3ChartArg = findStressorById(objId);
 
     /* d3.selectAll(".chart-container")
       .selectAll("svg")
@@ -315,6 +331,11 @@ function startApp() {
     drawChart(d3ChartArg, objId);
     resizeChart(d3ChartArg, objId);
   });
+
+  /* JackM event listener window resize, lines 336-338 */
+  $(window).on("resize", function (event) {
+    resizeChart(d3ChartArg, objId);
+  })
 
   $(".close-d3-button").on("click", function (event) {
     /* Instead of travesing up from the close button, and back down
